@@ -1,0 +1,39 @@
+/*🧩 Question:
+Write a SystemVerilog function that takes an integer dynamic array and
+returns the reversed version of that array.
+
+🧠 Requirements:
+Use a function.
+
+Don’t use the built-in .reverse() method.
+
+Manually swap elements using a loop.
+
+Return the reversed array.
+
+
+module tb;
+int arr[]='{1,4,7,9};
+int p[];
+function automatic void rev(ref int x[],output int rev_arr[]);
+int q[];
+int k;
+k=x.size();
+q=new[k];
+for(int i=0;i<x.size();i++)
+begin
+q[i]=x[x.size()-1-i];
+end
+rev_arr=q;
+endfunction
+
+initial
+begin
+rev(arr,p);
+$display("arr=%p,p=%p",arr,p);
+end
+endmodule
+
+output:arr='{1, 4, 7, 9} ,p='{9, 7, 4, 1}
+
+  
