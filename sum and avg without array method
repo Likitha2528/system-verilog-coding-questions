@@ -1,0 +1,38 @@
+Write a SystemVerilog task that:
+
+Takes an integer dynamic array as input.
+
+Calculates the sum of all elements.
+
+Calculates the average value of all elements.
+
+Displays both results using $display.
+
+🧠 Requirements:
+
+Use a task, not a function.
+
+Use a ref array parameter (so that large arrays don’t get copied).
+
+Use a for loop to calculate the sum.
+..............................................................................................
+module tb;
+int arr[]='{10,20,30,40};
+int sum,avg;
+task sum_avg(ref int a[],output int s,av);
+int temp_s;
+for (int i=0;i<a.size();i++)
+begin
+temp_s+=a[i];
+end
+s=temp_s;
+av=temp_s/a.size();
+endtask
+initial
+begin
+sum_avg(arr,sum,avg);
+$display("sum:%d,avg:=%d",sum,avg);
+end
+endmodule
+..................................................................................................
+output:sum:        100,avg:=         25
