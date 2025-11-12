@@ -1,0 +1,43 @@
+💼 Question  Find the Index of the Largest Element
+🧩 Question:
+Write a SystemVerilog function that:
+
+Takes an integer dynamic array as input.
+
+Returns the index of the largest element in the array.
+
+🧠 Requirements:
+Use a function (not a task).
+
+Use ref for the array argument.
+
+Use a for loop and comparison logic.
+
+Return the index (not the value).*/
+
+
+
+module tb;
+int a[]='{2,4,45,68,9};
+int index;
+function automatic void largest_index(ref int p[],output int y);
+int idx;
+int dx=p[0];
+for(int i=1;i<p.size();i++)
+begin
+if(p[i]>dx)
+begin
+dx=p[i];
+idx=i;
+end
+end
+y=idx;
+endfunction
+initial
+begin
+largest_index(a,index);
+$display("index of largest element:%d",index);
+end
+endmodule
+
+output:index of largest element:          3
